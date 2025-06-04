@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+
+body {
+    background-color: #F4F0EA;
+    color: black;
+    margin: 0;
+    padding: 0;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+h1 {
+    text-align: center;
+    color: rgb(35, 9, 230);
+    margin-top: 3rem;
+}
+
+h2 {
+    text-align: center;
+    color: rgb(224, 161, 25);
+    margin-top: 4.2rem;
+    margin-bottom: 2rem;
+}
+
+.input-container {
+    max-width: 400px;
+    margin: 2rem auto;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.adicionar-texto {
+    flex: 1;
+    height: 40px;
+    border-radius: 10px;
+    padding: 0 12px;
+    font-size: 16px;
+    border: 2px solid rgb(35, 9, 230);
+    transition: border-color 0.3s;
+}
+
+.adicionar-texto:focus {
+    border-color: rgb(224, 161, 25);
+    outline: none;
+}
+
+.adicionar-botão {
+    width: 50px;
+    height: 40px;
+    background-color: rgb(35, 9, 230);
+    border-radius: 10px;
+    font-size: 24px;
+    color: rgb(224, 161, 25);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.adicionar-botão:hover {
+    background-color: rgb(10, 1, 65);
+}
+
+.lista-tarefas {
+    max-width: 400px;
+    margin: 1rem auto;
+    padding: 0;
+    list-style: none;
+}
+
+.lista-tarefas li {
+    background: #fff;
+    margin-bottom: 8px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+.lista-tarefas li.concluida {
+    text-decoration: line-through;
+    color: #999;
+    background-color: #e0e0e0;
+}
+
+.botao-remover {
+    background: transparent;
+    border: none;
+    color: red;
+    font-weight: bold;
+    font-size: 18px;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+    margin-left: 10px;
+}
+
+.botao-remover:hover {
+    opacity: 1;
+}
+
+.limpar-container {
+    max-width: 400px;
+    margin: 1rem auto;
+    text-align: center;
+}
+
+.botão-limpar {
+    color: rgb(255, 255, 255);
+    background-color: rgb(35, 9, 230);
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.botão-limpar:hover {
+    background-color: rgb(10, 1, 65);
+}
+
+
+@media (max-width: 450px) {
+    .input-container {
+        flex-direction: column;
+        gap: 8px;
+        max-width: 90%;
+    }
+
+    .adicionar-botão, .adicionar-texto {
+        width: 100%;
+    }
+
+    .lista-tarefas {
+        max-width: 90%;
+    }
+
+    .botão-limpar {
+        width: 100%;
+    }
+}
