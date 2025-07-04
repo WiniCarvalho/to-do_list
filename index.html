@@ -1,42 +1,35 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>To_do</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>To-Do List</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <h1 class="titulo">To do list</h1>
-    <div class="input-container">
-        <input 
-            class="adicionar-texto" 
-            type="text" 
-            name="adicionar" 
-            size="30"
-             
-            placeholder="Adicione uma tarefa..." 
-        />
-        <button class="adicionar-botão">+</button>
-    </div>
+  <main class="todo-container">
+    <h1 class="titulo">To-Do List</h1>
+
+    <section class="input-container">
+      <input
+        class="adicionar-texto"
+        type="text"
+        name="adicionar"
+        placeholder="Adicione uma tarefa..."
+        autocomplete="off"
+      />
+      <button class="adicionar-botao" aria-label="Adicionar tarefa">+</button>
+    </section>
+
     <h2 class="subtitulo">Tarefas</h2>
-    <div class="exibir-tarefas">
-        <ul class="lista-tarefas"></ul>
 
-    </div>
-    
-    <div class="limpar-container">
-        <button class="botão-limpar">Limpar</button>
-    </div>
-    <script src="script.js"></script>
+    <section class="exibir-tarefas">
+      <ul class="lista-tarefas" aria-live="polite"></ul>
+    </section>
+
+    <section class="limpar-container">
+      <button class="botao-limpar" aria-label="Limpar todas as tarefas">Limpar</button>
+    </section>
+  </main>
 </body>
-
-
-
-
-
-
-
-
-
 </html>
