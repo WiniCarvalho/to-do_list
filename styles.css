@@ -1,177 +1,159 @@
-@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
 * {
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 body {
-  background: linear-gradient(135deg, #f4f0ea, #d9d6ce);
-  color: #222;
-  font-family: 'Titillium Web', sans-serif;
-  margin: 0;
-  padding: 2rem 1rem;
+  background: #0f1117;
+  color: #f0f0f0;
+  font-family: 'Inter', sans-serif;
   display: flex;
   justify-content: center;
-  min-height: 100vh;
   align-items: flex-start;
+  min-height: 100vh;
+  padding: 2rem 1rem;
 }
 
-.todo-container {
-  background: #ffffffdd;
-  box-shadow: 0 10px 30px rgba(2, 154, 255, 0.2);
+.todo-wrapper {
+  background-color: #1a1c23;
   border-radius: 16px;
-  padding: 2.5rem 2rem;
-  max-width: 450px;
+  box-shadow: 0 0 24px rgba(0, 191, 255, 0.15);
+  padding: 2rem;
   width: 100%;
+  max-width: 480px;
   display: flex;
   flex-direction: column;
-  gap: 1.8rem;
+  gap: 1.5rem;
 }
 
-.titulo {
+header h1 {
+  font-size: 2rem;
+  color: #00bfff;
   text-align: center;
   font-weight: 700;
-  font-size: 2.4rem;
-  color: rgb(2, 154, 255);
-  text-shadow: 1px 1px 8px rgba(2, 154, 255, 0.5);
-  margin: 0;
+  margin-bottom: 0.25rem;
 }
 
-.subtitulo {
+header p {
   text-align: center;
-  font-weight: 700;
-  font-size: 1.4rem;
-  color: rgb(224, 161, 25);
-  margin: 0 0 1rem 0;
-  text-shadow: 1px 1px 5px rgba(224, 161, 25, 0.4);
-}
-
-.input-container {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-}
-
-.adicionar-texto {
-  flex-grow: 1;
-  height: 44px;
-  border-radius: 12px;
-  padding: 0 16px;
   font-size: 1rem;
-  border: 2px solid rgb(35, 9, 230);
-  transition: border-color 0.3s, box-shadow 0.3s;
-  outline-offset: 2px;
-  color: #222;
-  font-weight: 600;
-  font-family: 'Titillium Web', sans-serif;
-}
-
-.adicionar-texto::placeholder {
-  color: #888;
+  color: #aaa;
   font-weight: 400;
 }
 
-.adicionar-texto:focus {
-  border-color: rgb(224, 161, 25);
-  box-shadow: 0 0 10px rgb(224, 161, 25);
-  outline: none;
+.todo-input-area {
+  display: flex;
+  gap: 0.5rem;
 }
 
-.adicionar-botao {
-  width: 56px;
-  background-color: rgb(35, 9, 230);
-  border-radius: 12px;
+.input-tarefa {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #00bfff;
+  border-radius: 10px;
+  background-color: #12141a;
+  color: #fff;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+.input-tarefa:focus {
+  border-color: #40e0d0;
+  box-shadow: 0 0 8px #00bfff44;
+}
+
+.btn-add {
+  padding: 0.75rem 1.2rem;
+  background-color: #00bfff;
+  color: #000;
+  font-weight: 600;
   border: none;
-  color: rgb(224, 161, 25);
-  font-size: 1.8rem;
-  font-weight: 700;
+  border-radius: 10px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 4px 12px rgba(35, 9, 230, 0.6);
-  user-select: none;
+  transition: 0.3s ease;
 }
 
-.adicionar-botao:hover,
-.adicionar-botao:focus {
-  background-color: rgb(25, 5, 180);
+.btn-add:hover {
+  background-color: #40e0d0;
   transform: scale(1.05);
-  outline: none;
 }
 
-.exibir-tarefas {
+.todo-list-area {
   max-height: 320px;
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: rgb(2, 154, 255) transparent;
-  padding-right: 4px;
+  scrollbar-color: #00bfff transparent;
 }
 
-.exibir-tarefas::-webkit-scrollbar {
-  width: 8px;
+.todo-list-area::-webkit-scrollbar {
+  width: 6px;
+}
+.todo-list-area::-webkit-scrollbar-thumb {
+  background: #00bfff;
+  border-radius: 6px;
 }
 
-.exibir-tarefas::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.exibir-tarefas::-webkit-scrollbar-thumb {
-  background-color: rgb(2, 154, 255);
-  border-radius: 8px;
-}
-
-.lista-tarefas {
+.todo-list {
   list-style: none;
-  padding: 0;
-  margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.75rem;
 }
 
-.limpar-container {
-  text-align: center;
+.todo-list li {
+  background-color: #23252d;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.2s ease;
 }
 
-.botao-limpar {
-  background-color: rgb(35, 9, 230);
-  color: rgb(224, 161, 25);
-  font-weight: 700;
-  font-size: 1.1rem;
-  padding: 12px 28px;
+.todo-list li:hover {
+  background-color: #2a2c34;
+}
+
+.todo-list li.done {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.todo-list button {
+  background: transparent;
   border: none;
-  border-radius: 14px;
+  color: #ff4c4c;
+  font-size: 1.2rem;
   cursor: pointer;
-  box-shadow: 0 6px 18px rgba(35, 9, 230, 0.6);
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  user-select: none;
+  transition: 0.2s ease;
 }
 
-.botao-limpar:hover,
-.botao-limpar:focus {
-  background-color: rgb(25, 5, 180);
-  transform: scale(1.05);
-  outline: none;
+.todo-list button:hover {
+  transform: scale(1.2);
 }
 
-@media (max-width: 480px) {
-  body {
-    padding: 1rem;
-  }
-  .todo-container {
-    padding: 1.8rem 1rem;
-    max-width: 100%;
-  }
-  .adicionar-botao {
-    width: 48px;
-    font-size: 1.5rem;
-  }
-  .adicionar-texto {
-    height: 38px;
-    font-size: 0.95rem;
-  }
-  .botao-limpar {
-    width: 100%;
-    padding: 14px 0;
-    font-size: 1rem;
-  }
+.todo-footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.btn-clear {
+  background-color: transparent;
+  border: 2px solid #00bfff;
+  color: #00bfff;
+  font-weight: 600;
+  padding: 0.6rem 1.4rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-clear:hover {
+  background-color: #00bfff;
+  color: #000;
 }
