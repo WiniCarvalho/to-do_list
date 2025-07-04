@@ -1,48 +1,45 @@
-// selecionar elementos do DOM
-const inputTarefa = document.querySelector(".adicionar-texto");
-const botaoAdicionar = document.querySelector(".adicionar-botão");
-const listaTarefas = document.querySelector(".lista-tarefas"); // Já existe no HTML
-const botaoLimpar = document.querySelector(".botão-limpar");
+const inputTarefa = document.querySelector('.input-tarefa');
+const btnAdd = document.querySelector('.btn-add');
+const listaTarefas = document.querySelector('.todo-list');
+const btnClear = document.querySelector('.btn-clear');
 
+function criarItem(texto) {
+  const li = document.createElement('li');
+  li.textContent = texto;
 
-function adicionarTarefa() {
-    const textoTarefa = inputTarefa.value.trim();
+  const btnRemover = document.createElement('button');
+  btnRemover.innerHTML = '×';
 
-    if (textoTarefa === "") {
-        alert("Por favor, digite uma tarefa!");
-        return;
-    }
-
-    const novaTarefa = document.createElement("li");
-    novaTarefa.textContent = textoTarefa;
-    novaTarefa.classList.add("item-tarefa");
-
-    
-    const botaoRemover = document.createElement("button");
-    botaoRemover.textContent = "X";
-    botaoRemover.classList.add("botao-remover");
-
-    
-    botaoRemover.addEventListener("click", function (event) {
-        event.stopPropagation(); // Impede o clique de ativar o "toggle" de concluída
-        novaTarefa.remove();
-    });
-
-    
-    novaTarefa.addEventListener("click", function () {
-        novaTarefa.classList.toggle("concluida");
-    });
-
-    novaTarefa.appendChild(botaoRemover);
-    listaTarefas.appendChild(novaTarefa);
-    inputTarefa.value = "";
+  li.appendChild(btnRemover);
+  listaTarefas.appendChild(li);
 }
 
+btnAdd.addEventListener('click', () => {
+  const texto = inputTarefa.value.trim();
+  if (texto !== '') {
+    criarItem(texto);
+    inputTarefa.value = '';
+    inputTarefa.focus();
+  }
+});
 
-botaoAdicionar.addEventListener("click", adicionarTarefa);
+inputTarefa.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    btnAdd.click();
+  }
+});
 
+listaTarefas.addEventListener('click', (e) => {
+  const el = e.target;
+  if (el.tagName === 'LI') {
+    el.classList.toggle('done');
+  }
+  if (el.tagName === 'BUTTON') {
+    el.parentElement.remove();
+  }
+});
 
-botaoLimpar.addEventListener("click", function () {
-    listaTarefas.innerHTML = "";
+btnClear.addEventListener('click', () => {
+  listaTarefas.innerHTML = '';
 });
 
