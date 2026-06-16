@@ -1,28 +1,120 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>To-Do List </title>
-  <link rel="stylesheet" href="styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&display=swap" rel="stylesheet" />
-</head>
-<body>
-  <main class="todo-container">
-  <h1>Minha To-Do List</h1>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Control</title>
 
-  <form id="todo-form">
-    <input type="text" id="todo-input" placeholder="Adicione uma nova tarefa..." autocomplete="off" required />
-    <button type="submit">Adicionar</button>
-  </form>
+  <link rel="stylesheet" href="styles.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <main class="todo-container">
+
+```
+<div class="app-header">
+
+  <h1>Task Control</h1>
+
+  <p>
+    Organize suas atividades e mantenha o foco no que importa.
+  </p>
+
+</div>
+
+<form id="todo-form">
+
+  <input
+    type="text"
+    id="todo-input"
+    placeholder="Adicionar nova tarefa..."
+    autocomplete="off"
+    required
+  >
+
+  <button type="submit">
+    +
+  </button>
+
+</form>
+
+<div class="task-stats">
+
+  <div class="stat-card">
+
+    <span class="stat-number" id="total-tasks">
+      0
+    </span>
+
+    <span class="stat-label">
+      Total
+    </span>
+
+  </div>
+
+  <div class="stat-card">
+
+    <span class="stat-number" id="pending-tasks">
+      0
+    </span>
+
+    <span class="stat-label">
+      Pendentes
+    </span>
+
+  </div>
+
+  <div class="stat-card">
+
+    <span class="stat-number" id="completed-tasks">
+      0
+    </span>
+
+    <span class="stat-label">
+      Concluídas
+    </span>
+
+  </div>
+
+</div>
+
+<section class="tasks-section">
+
+  <h2>Minhas Tarefas</h2>
 
   <ul id="todo-list"></ul>
 
-  <div class="limpar-container">
-    <button id="botao-limpar" class="limpar-btn">Limpar Tudo</button>
-  </div>
-</main>
+</section>
+
+<div class="limpar-container">
+
+  <button
+    id="botao-limpar"
+    class="limpar-btn">
+
+    Limpar Tudo
+
+  </button>
+
+</div>
+
+<footer class="app-footer">
+
+  <p>
+    Task Control 
+
+  </p>
+
+</footer>
+```
+
+  </main>
 
   <script src="script.js"></script>
+
 </body>
 </html>
