@@ -1,61 +1,122 @@
-// Selecionar elementos do DOM adaptados ao novo HTML/CSS
 const inputTarefa = document.getElementById("todo-input");
-const botaoAdicionar = document.querySelector("#todo-form button");
 const listaTarefas = document.getElementById("todo-list");
-
 const form = document.getElementById("todo-form");
+const botaoLimpar = document.getElementById("botao-limpar");
+
+const totalTasks = document.getElementById("total-tasks");
+const pendingTasks = document.getElementById("pending-tasks");
+const completedTasks = document.getElementById("completed-tasks");
+
+function atualizarEstatisticas() {
+
+  const tarefas = document.querySelectorAll(".todo-item");
+
+  const concluidas = document.querySelectorAll(
+    ".todo-item.completed"
+  );
+
+  totalTasks.textContent = tarefas.length;
+
+  completedTasks.textContent = concluidas.length;
+
+  pendingTasks.textContent =
+    tarefas.length - concluidas.length;
+}
 
 function adicionarTarefa(event) {
-  event.preventDefault(); // prevenir envio do form e reload
+
+  event.preventDefault();
 
   const textoTarefa = inputTarefa.value.trim();
 
   if (textoTarefa === "") {
+
     alert("Por favor, digite uma tarefa!");
+
     return;
   }
 
-  // Criar li da tarefa com a nova estrutura
   const novaTarefa = document.createElement("li");
+
   novaTarefa.classList.add("todo-item");
 
-  // Span para o texto (clicável para concluir)
   const textoSpan = document.createElement("span");
+
   textoSpan.classList.add("todo-text");
+
   textoSpan.textContent = textoTarefa;
 
   textoSpan.addEventListener("click", () => {
+
     novaTarefa.classList.toggle("completed");
+
+    atualizarEstatisticas();
+
   });
 
-  // Container dos botões (ex: remover)
   const acoes = document.createElement("div");
+
   acoes.classList.add("todo-actions");
 
-  // Botão remover
   const botaoRemover = document.createElement("button");
-  botaoRemover.innerHTML = "&#10005;"; // símbolo "X"
-  botaoRemover.setAttribute("aria-label", "Remover tarefa");
+
+  botaoRemover.innerHTML = "✕";
+
+  botaoRemover.setAttribute(
+    "aria-label",
+    "Remover tarefa"
+  );
+
   botaoRemover.addEventListener("click", (e) => {
-    e.stopPropagation(); // não dispara o toggle de conclusão
+
+    e.stopPropagation();
+
     novaTarefa.remove();
+
+    atualizarEstatisticas();
+
   });
 
   acoes.appendChild(botaoRemover);
 
   novaTarefa.appendChild(textoSpan);
+
   novaTarefa.appendChild(acoes);
 
   listaTarefas.appendChild(novaTarefa);
 
   inputTarefa.value = "";
+
   inputTarefa.focus();
+
+  atualizarEstatisticas();
 }
 
-form.addEventListener("submit", adicionarTarefa);
-
-const botaoLimpar = document.getElementById("botao-limpar");
+form.addEventListener(
+  "submit",
+  adicionarTarefa
+);
 
 botaoLimpar.addEventListener("click", () => {
+
+  if (listaTarefas.children.length === 0) {
+
+    return;
+  }
+
+  const confirmar = confirm(
+    "Deseja realmente remover todas as tarefas?"
+  );
+
+  if (!confirmar) {
+
+    return;
+  }
+
   listaTarefas.innerHTML = "";
+
+  atualizarEstatisticas();
+
 });
+
+atualizarEstatisticas();
